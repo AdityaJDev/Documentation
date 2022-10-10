@@ -1,0 +1,27 @@
+table.dataTable.dtr-inline.collapsed.compact>tbody>tr>td:first-child:before,
+table.dataTable.dtr-inline.collapsed.compact>tbody>tr>th:first-child:before {
+  top: auto;
+  left: 0px;
+}
+
+.dataTables_length,
+.dataTables_filter,
+.dataTables_info,
+.dataTables_paginate {
+  font-size: 0.75rem !important;
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.dataTables_filter input {
+  padding: 0.375rem 0.75rem;
+  background: #fff !important;
+  border: 1px solid #ced4da !important;
+  border-radius: 0.25rem;
+}
+
+.dataTables_paginate .paginate_button.current {
+  background: #fff !important;
+  border: 1px solid #ced4da !important;
+  border-radius: 0.25rem;
+}

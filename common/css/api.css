@@ -1,0 +1,34 @@
+code {
+  font-size: 13px !important;
+}
+code[class*=language-], pre[class*=language-] {
+  font-family: Menlo, "Droid Sans", Consolas, monospace !important;
+}
+.code {
+  font-family: Menlo, Consolas, monospace !important;
+  font-size: 13px !important;
+  line-height: 19px !important;
+  padding: 0.5rem 0.5rem 1.5rem 0.5rem !important;
+  border-radius: 4px;
+  min-height: 64px;
+  height: 100%;
+  overflow-x: auto !important;
+  border: 16px solid transparent;
+}
+.code::-webkit-scrollbar {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  height: 0.5rem;
+  width: 0.5rem;
+}
+.code::-webkit-scrollbar-track {
+  background: rgb(64, 80, 80);
+  border-radius: 8px;
+}
+.code::-webkit-scrollbar-thumb {
+  background-color: rgb(32, 40, 40);
+  border-radius: 8px;
+}
+.code::-webkit-scrollbar-corner {
+  border-radius: 8px;
+}

@@ -1,0 +1,52 @@
+.select-refdate {
+  height: calc(1.2em + .75rem + 2px)!important;
+  padding: .375rem .3rem!important;
+}
+#settings-table td:not(:first-of-type),
+#scenario-table tr.scenario-row td:not(.select-refdate) {
+  cursor: pointer;
+}
+#result-params {
+  width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+}
+#result-table-header {
+  background-color: #bbb;
+}
+#result-table {
+  font-size: 0.875rem;
+}
+#result-table th {
+  padding: 0.5rem 1rem;
+}
+#result-table tr {
+  border-top: 2px solid white;
+}
+#result-table td {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+#result-table .fa {
+  vertical-align: text-bottom;
+}
+#result-table .month-value, #result-table .year-value {
+  padding-right: 1rem;
+}
+.major-row.major-row-input {
+  background-color: rgba(255, 128, 128, 0.25) !important;
+}
+.major-row.major-row-output {
+  background-color: rgba(64, 192, 128, 0.50) !important;
+}
+.minor-row {
+  /* background-color: rgba(0, 0, 0, 0.05); */
+  /* font-size: 80%; */
+}
+.expand-row {
+  /* font-size: 80%; */
+  padding: 0 0.5rem 0 0.75rem;
+  vertical-align: text-bottom;
+}

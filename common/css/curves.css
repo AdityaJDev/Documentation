@@ -1,0 +1,12 @@
+.indent-marker:before {
+  content: "\2022\0020\2022\0020";
+  font-size: 16px;
+  opacity: .5;
+}
+#curve-table td, #curve-table th {
+  padding: .3rem 1rem;
+  font-size: 14px;
+}
+.expand-row {
+  cursor: pointer;
+}

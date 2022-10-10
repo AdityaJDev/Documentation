@@ -1,0 +1,67 @@
+#backcast-table td, #backcast-table th, #backtestdata td, #backtestdata th {
+  font-size: 0.75rem;
+}
+#backcast-table > tbody > tr > td:not(:first-child) {
+  cursor: pointer;
+}
+
+.chart-a {
+  padding: 1.5rem;
+}
+.chart-color-energy {
+  stroke: none;
+  fill: rgba(64, 128, 192, 0.75);
+}
+.chart-color-spin {
+  stroke: none;
+  fill: rgba(64, 128, 192, 0.25);
+}
+.chart-color-reg {
+  stroke: none;
+  fill: rgba(64, 128, 192, 0.25);
+}
+.chart-color-25 {
+  fill: rgba(64, 128, 192, 0.25);
+}
+.chart-color-50 {
+  fill: rgba(64, 128, 192, 0.50);
+}
+.chart-color-75 {
+  fill: rgba(64, 128, 192, 0.75);
+}
+
+#input-container .form-group {
+  padding-bottom: 0;
+}
+#output-container > .row {
+  margin-bottom: 1rem;
+}
+.btn-execute {
+  margin-right: 40px;
+  margin-bottom: 20px;
+}
+#input-container #node {
+  text-transform: uppercase;
+}
+@media (max-width: 575px) {
+  .form-group {
+    margin-bottom: 0.5rem;
+  }
+  /*
+  .form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+  .form-group .col-form-label {
+    background-color: white;
+    font-size: 0.75rem;
+    position: absolute;
+    top: -0.5rem;
+    left: 1.5rem;
+    padding: 0 0.25rem;
+    margin: 0;
+    width: auto;
+    z-index: 1;
+  }
+  */
+}

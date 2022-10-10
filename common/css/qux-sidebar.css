@@ -1,0 +1,178 @@
+/* Sidebar */
+#nav {
+  /* This has to be min-height and not height
+   * otherwise menus don't drop down in responsive mode
+   */
+  min-height: 5rem !important;
+}
+.qux-nav {
+  padding: 0.5rem !important;
+}
+
+/*
+ * Use it for the subnav
+ */
+#qux-toc-nav {
+  background-color: #ffffff;
+}
+.qux-navbar {
+    color: #242830 !important;
+}
+@media screen and (max-width: 767px) {
+    .qux-navbar {
+        flex-direction: column;
+        text-transform: capitalize;
+        padding: 0.5rem 0;
+    }
+}
+@media screen and (min-width: 768px) {
+    #qux-toc-nav {
+        padding: 0.5rem 0;
+    }
+}
+.qux-navbar-brand .navbar-brand {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+#nav .navbar-toggler, #nav .navbar-toggler-icon {
+  color: #242830 !important;
+  border: 1px solid transparent;
+}
+.nav-link a, #qux-sidebar a {
+  color: #f8f8f8;
+}
+#nav-top-left {
+  display: none;
+}
+#nav .nav-item {
+  color: white !important;
+}
+.nav-link:hover {
+  background-color: inherit !important;
+  /*color: yellow !important;*/
+}
+#nav .navbar-toggler:focus {
+  outline: none;
+}
+#qux-content {
+  margin: 0;
+}
+.qux-sidebar {
+  order: 0;
+  -webkit-box-ordinal-group: 1;
+  /*min-height: 4.5rem;*/
+  background-color: rgb(36, 40, 48);
+  color: #343a40;
+}
+#qux-sidebar .fa-ul {
+  margin-left: 2.25em;
+  color: #f0f0f0 !important;
+}
+
+.qux-links {
+}
+.qux-search {
+  position: relative;
+  padding: 1rem 15px;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.qux-toc-item {
+}
+.qux-toc-link {
+  display: block;
+  padding: 0.25rem 1rem;
+}
+.qux-toc-item > .qux-sidenav {
+  display: none;
+}
+.qux-toc-item > .fa-ul {
+  padding-left: 0.5em;
+}
+.qux-sidenav li {
+  display: block;
+  padding: 0.25rem 1.5rem;
+  font-size: 90%;
+}
+.qux-sidenav li:before {
+  content: "\f054";
+  font-family: "Font Awesome 6";
+  font-weight: 900;
+  padding-right: 0.5rem;
+}
+.qux-content {
+  /* height: calc(100vh - 9.5rem); */
+  /*min-height: 100vh;*/
+  overflow-y: auto;
+}
+@media screen and (min-width: 768px) {
+  #nav-top-left {
+    width: 12rem;
+    height: 4rem;
+    display: inline-block;
+    padding-top: 17px;
+    padding-bottom: 17px;
+    padding-left: 1rem;
+    margin-left: -1rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  #content {
+    padding: 2rem 3rem;
+  }
+  .qux-navbar-brand {
+    width: 100%;
+    max-width: calc(11rem + 6px)
+  }
+  .qux-sidebar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 4rem;
+    height: calc(100vh - 5rem);
+    border-bottom: 0;
+    z-index: 1000;
+    max-width: calc(12rem + 30px);
+    background-color: rgb(36, 40, 48);
+    color: #f8f9fa;
+  }
+  #qux-sidebar .fa-ul {
+    margin-left: 2.75em;
+  }
+  .qux-links {
+    display: block !important;
+  }
+  .qux-search {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  .qux-toc-item:not(:first-child) {
+    margin-top: 0.5rem;
+  }
+  .qux-toc-link {
+    padding: 0.25rem 1.5rem;
+  }
+  .qux-toc-item {
+    margin-bottom: 0.5rem;
+  }
+  .qux-toc-item > .qux-sidenav {
+    display: block;
+  }
+  .qux-content {
+    max-width: calc(100vw - 12rem - 30px);
+    height: calc(100vh - 5rem);
+  }
+}
+
+h1, .h1 {
+    font-size: 2em;
+    font-weight: 700;
+    margin: 1em auto;
+}
+@media screen and (max-width: 767px) {
+    h1, .h1 { font-size: 1.5em; }
+    h2, .h2 { font-size: 1.25em; }
+}
+@media screen and (max-width: 575px) {
+    h1, .h1 { font-size: 1.25em; }
+    h2, .h2 { font-size: 1em; }
+}

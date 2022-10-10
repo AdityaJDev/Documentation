@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="26px" viewBox="0 0 24 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>calendar@1x</title>
+    <desc>Created with Sketch.</desc>
+    <g id="StyleGuide" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Desktop" transform="translate(-405.000000, -562.000000)" stroke="#2C3551" stroke-width="1.5">
+            <g id="calendar" transform="translate(406.000000, 563.000000)">
+                <rect id="Rectangle-path" x="0" y="2.4" width="22.1538462" height="21.6" rx="3"></rect>
+                <path d="M16,0 L16,4.8" id="Shape"></path>
+                <path d="M6.15384615,0 L6.15384615,4.8" id="Shape"></path>
+                <path d="M0,9.6 L22.1538462,9.6" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>
