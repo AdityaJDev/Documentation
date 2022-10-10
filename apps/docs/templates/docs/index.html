@@ -1,0 +1,89 @@
+{% extends 'docs/_app_docs.html' %}
+
+{% load static %}
+{% load fmdocs %}
+{% load markdown_to_html  %}
+
+{% block stylesheets %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/prism.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/api.css' %}"/>
+{% endblock %}
+
+{% block qux_content %}
+<section>
+  <div class="container-fluid px-md-4 my-4">
+  {% for obj in objects %}
+      <div class="row mb-3 pb-3"
+           style="border-bottom: 1px solid #e0e0e0;"
+           data-app="{{ url.app|lower }}">
+        <div class="col-12 col-md-6 description">
+          <div class="mb-3 mb-md-4">
+            <code><b>{{ obj.name }}</b></code>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6">
+          {% if obj.data %}
+            <pre class="code"><code class="language-json">{{ obj.data|safe }}</code></pre>
+          {% endif %}
+        </div>
+      </div>
+  {% endfor %}
+
+
+  {% for url in object_list %}
+      <div class="row mb-3 pb-3"
+           style="border-bottom: 1px solid #e0e0e0;"
+           data-app="{{ url.app|lower }}">
+        <div class="col-12 col-md-6 description">
+          <div class="mb-3 mb-md-4">
+            <code><b>{{ url.action }}</b> {{ url.path }}</code>
+          </div>
+          <div>
+            {{ url.description | markup_to_html | safe }}
+            {% if url.inputs.items %}
+              <div>Input Parameters</div>
+              {% for keys, values in url.inputs.items %}
+                <p><b>{{ keys }}</b></p>
+                <ul>
+                  {% for key, value in values.items %}
+                    <li><b>{{ key }}</b>: {{ value }}</li>
+                  {% endfor %}
+                </ul>
+              {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <pre class="code"><code class="language-bash">{{ url.curl | safe }}</code></pre>
+          <pre class="code"><code class="language-python">{{ url.python | safe }}</code></pre>
+          {% if url.output %}
+            <pre class="code"><code class="language-json">{{ url.output|safe }}</code></pre>
+          {% endif %}
+        </div>
+      </div>
+  {% endfor %}
+  </div>
+</section>
+{% endblock %}
+
+
+{% block javascript %}
+{{ block.super }}
+<script src="{% static 'js/prism.js' %}"></script>
+{% endblock %}
+
+{% block customjs %}
+{{ block.super }}
+<script>
+  $(".docs-app-api").click(function (e) {
+    e.preventDefault();
+    let content = $(this).data("app");
+    $(".active").removeClass("active");
+    $(this).addClass("active");
+    $("[data-app='"+content+"'").show();
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,110 @@
+[
+  {
+    "model": "docs.api",
+    "pk": 1,
+    "fields": {
+      "dtm_created": "2022-01-01T00:00:00Z",
+      "dtm_updated": "2022-01-01T00:00:00Z",
+      "app": 3,
+      "url": "https://api.finmachines.com/v1/raptor",
+      "path": "/v1/raptor",
+      "domain": "https://api.finmachines.com/",
+      "action": "GET",
+      "description": "### Raptor results\r\n\r\n---\r\n\r\n**Result**\r\n\r\nReturn a list of _raptor_ objects",
+      "inputs": "",
+      "output": "[\r\n  {\r\n    \"slug\": \"raptor_eXUXcj3z1Sqa1XWy\",\r\n    \"project\": 14,\r\n    \"dtm_created\": \"2022-01-19T08:14:58.759557Z\",\r\n    \"dtm_updated\": \"2022-01-19T08:14:58.759567Z\",\r\n    \"refdate\": \"2020-12-25\",\r\n    \"startdate\": \"2023-01-01\",\r\n    \"enddate\": \"2023-12-31\",\r\n    \"capacity\": 300.0,\r\n    \"energy\": 300.0,\r\n    \"value\": null,\r\n    \"valuation_model\": \"PlusStorageAsset\"\r\n  },\r\n  {...},\r\n  {...}\r\n]",
+      "curl": "curl --location \\\r\n  --request GET \\\r\n  --header \"Authorization: Token ${FINMACHINES_TOKEN}\" \\\r\n  \"https://api.finmachines.com/v1/raptor/\"",
+      "python": "import os\r\nimport requests\r\n\r\nurl = \"https://api.finmachines.com/v1/raptor\"\r\n\r\npayload={}\r\nheaders = {\r\n  \"Authorization\": f\"Token {os.getenv('FINMACHINES_TOKEN')}\"\r\n}\r\n\r\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\r\n\r\nprint(response.text)"
+    }
+  },
+  {
+    "model": "docs.api",
+    "pk": 2,
+    "fields": {
+      "dtm_created": "2022-01-01T00:00:00Z",
+      "dtm_updated": "2022-01-01T00:00:00Z",
+      "app": 3,
+      "url": "https://api.finmachines.com/v1/raptor/{raptor-slug}/",
+      "path": "/v1/raptor/{raptor-slug}/",
+      "domain": "https://api.finmachines.com/",
+      "action": "GET",
+      "description": "### Raptor calculation results\r\n\r\n---\r\n\r\n**Parameters**\r\n\r\n`raptor-slug` <span class=\"small text-muted\">string</span>\r\n\r\nFormat is _raptor_abcd1234efgh5678_.\r\n\r\n---\r\n\r\n**Result**\r\n\r\nReturns a list of **raptor_result_header** objects.",
+      "inputs": "",
+      "output": "[\r\n  {\r\n    \"id\": 39033,\r\n    \"dtm_created\": \"2021-12-30T14:10:04.431840Z\",\r\n    \"dtm_updated\": \"2021-12-30T14:10:04.431885Z\",\r\n    \"refdate\": \"2020-12-25\",\r\n    \"fordate\": \"2038-12-01\",\r\n    \"price_wdpk\": \"32.170\",\r\n    \"price_wepk\": \"24.060\",\r\n    \"price_7x8\": \"20.670\",\r\n    \"vol_wdpk\": \"0.600\",\r\n    \"vol_wepk\": \"0.400\",\r\n    \"vol_7x8\": \"0.200\",\r\n    \"corr_wdpk_7x8\": \"0.500\",\r\n    \"corr_wepk_7x8\": \"0.500\",\r\n    \"days_wd\": 23,\r\n    \"days_we\": 8,\r\n    \"scalars_wdpk\": null,\r\n    \"scalars_wdop\": null,\r\n    \"scalars_wepk\": null,\r\n    \"scalars_weop\": null,\r\n    \"discharge_capacity\": \"151.156\",\r\n    \"charge_speed\": \"151.156\",\r\n    \"discharge_speed\": \"151.156\",\r\n    \"asset_efficiency\": \"0.880\",\r\n    \"margin_wd\": \"323618.980\",\r\n    \"margin_we\": \"80099.070\",\r\n    \"margin_total\": \"403718.060\",\r\n    \"delta_wd\": \"0.070\",\r\n    \"delta_we\": \"0.070\",\r\n    \"delta_total\": \"0.000\",\r\n    \"delta_wd_hourly\": \"0.0,0.0,0.0,0.0,-168.33,117.59,30.55,0.0,0.0,0.0,0.0,0.0,-6.82,0.0,-161.51,0.0,0.0,0.0,0.0,148.13,0.0,-153.54,135.12,0.0\",\r\n    \"delta_we_hourly\": \"0.0,0.0,0.0,0.0,-168.33,74.45,73.68,0.0,0.0,0.0,0.0,0.0,-11.93,0.0,-156.4,0.0,0.0,0.0,0.0,148.13,0.0,-136.73,120.32,0.0\",\r\n    \"weekday_scalars\": \"1.15,0.9,0.85,0.75,0.65,1.0,2.0,1.5,1.25,1.0,0.9,0.75,0.5,0.55,0.5,0.6,0.8,1.1,1.25,1.5,1.2,0.85,1.5,1.2\",\r\n    \"weekend_scalars\": \"1.15,0.9,0.85,0.75,0.65,1.0,2.0,1.5,1.25,1.0,0.9,0.75,0.5,0.55,0.5,0.6,0.8,1.1,1.25,1.5,1.2,0.85,1.5,1.2\",\r\n    \"forecast\": 275\r\n  }\r\n  {...},\r\n  {...}\r\n]",
+      "curl": "curl --location \\\r\n  --request GET \\\r\n  --header \"Authorization: Token ${FINMACHINES_TOKEN}\" \\\r\n  \"https://api.finmachines.com/v1/raptor/raptor_eXUXcj3z1Sqa1XWy/\"",
+      "python": "import os\r\nimport requests\r\n\r\nurl = \"https://api.finmachines.com/v1/raptor/raptor_eXUXcj3z1Sqa1XWy/\"\r\n\r\nheaders = {\r\n  \"Authorization\": f\"Token {os.getenv('FINMACHINES_TOKEN')}\"\r\n}\r\n\r\npayload={}\r\n\r\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\r\n\r\nraptor_results = response.text"
+    }
+  },
+  {
+    "model": "docs.api",
+    "pk": 3,
+    "fields": {
+      "dtm_created": "2022-01-01T00:00:00Z",
+      "dtm_updated": "2022-01-01T00:00:00Z",
+      "app": 3,
+      "url": "https://api.finmachines.com/v1/raptor/calc/",
+      "path": "/v1/raptor/calc/",
+      "domain": "https://api.finmachines.com/",
+      "action": "POST",
+      "description": "### Launch Raptor calculation\r\n\r\n---\r\n\r\n**Parameters**\r\n\r\n<code>source</code> <span class=\"small text-muted\">list</span>\r\n\r\nList of XLSX files.\r\n\r\n---\r\n\r\n**Result**\r\n\r\nReturns a task-status that can be used to check on the status of a calculation until it is completed.",
+      "inputs": "",
+      "output": "{\r\n  \"task_id\": \"task_wQ9zWgFM72xH81bL\"\r\n}",
+      "curl": "curl --location \\\r\n  --request POST \\\r\n  --header \"Authorization: Token ${FINMACHINES_TOKEN}\" \\\r\n  --form \"source=@'/path/to/raptor-input-file.xlsx'\" \\\r\n  \"https://api.finmachines.com/v1/raptor/calc/\"",
+      "python": "import os\r\nimport requests\r\n\r\nurl = \"https://api.finmachines.com/v1/raptor/calc/\"\r\n\r\nfilepath = \"/path/to/excel-file.xlsx\"\r\ncontent_type = \"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\"\r\n\r\nheaders = {\r\n  \"Authorization\": f\"Token {os.getenv('FINMACHINES_TOKEN')}\"\r\n}\r\n\r\npayload = {}\r\n\r\nfiles = [(\"source\", (os.path.basename(filepath), open(filepath, \"rb\"), content_type))]\r\n\r\nresponse = requests.request(\"POST\", url, headers=headers, data=payload, files=files)"
+    }
+  },
+  {
+    "model": "docs.api",
+    "pk": 4,
+    "fields": {
+      "dtm_created": "2022-01-01T00:00:00Z",
+      "dtm_updated": "2022-01-01T00:00:00Z",
+      "app": 3,
+      "url": "https://api.finmachines.com/v1/raptor/task/{task-status}/",
+      "path": "/v1/raptor/task/{task-status}/",
+      "domain": "https://api.finmachines.com/",
+      "action": "GET",
+      "description": "### Check calculation status\r\n\r\nCheck the status of a calculation initiated either from the website or via the /calc/ API.\r\n\r\n---\r\n\r\n**Result**\r\n\r\n`error` <span class=\"small text-muted\">dict</span>\r\n\r\n`status` <span class=\"small text-muted\">dict</span>\r\n\r\n`success` <span class=\"small text-muted\">dict</span>",
+      "inputs": "",
+      "output": "{\r\n  \"error\": \"<error-message>\"\r\n}\r\n\r\n{\r\n  \"status\": \"Crunching numbers ... please check back in a while\"\r\n}\r\n\r\n{\r\n  \"slug\": \"raptor_eXUXcj3z1Sqa1XWy\",\r\n  \"dtm_created\": \"2022-01-19T08:14:58.759557Z\",\r\n  \"dtm_updated\": \"2022-01-19T08:14:58.759567Z\",\r\n  \"project\": 14,\r\n  \"energy\": \"300.000\",\r\n  \"capacity\": \"300.000\",\r\n  \"refdate\": \"2020-12-25\",\r\n  \"startdate\": \"2023-01-01\",\r\n  \"enddate\": \"2023-12-31\",\r\n  \"nodes\": 20,\r\n  \"value\": None,\r\n  \"valuation_model\": \"PlusStorageAsset\"\r\n}",
+      "curl": "curl --location \\\r\n  --request GET \\\r\n  --header \"Authorization: Token ${FINMACHINES_TOKEN}\" \\\r\n  \"https://api.finmachines.com/v1/raptor/task/task_wQ9zWgFM72xH81bL/\"",
+      "python": "import os\r\nimport requests\r\n\r\nurl = \"https://api.finmachines.com/v1/raptor/task/task_wQ9zWgFM72xH81bL/\"\r\n\r\nheaders = {\r\n  \"Authorization\": f\"Token {os.getenv('FINMACHINES_TOKEN')}\"\r\n}\r\n\r\npayload={}\r\n\r\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\r\n\r\ntask_status = response.text"
+    }
+  },
+  {
+    "model": "docs.api",
+    "pk": 5,
+    "fields": {
+      "dtm_created": "2022-01-01T00:00:00Z",
+      "dtm_updated": "2022-01-01T00:00:00Z",
+      "app": 3,
+      "url": "https://api.finmachines.com/v1/raptor/{raptor-slug}/{datatype}/",
+      "path": "/v1/raptor/{raptor-slug}/{datatype}",
+      "domain": "https://api.finmachines.com/",
+      "action": "GET",
+      "description": "### Revenue Forecast with datatype\r\n\r\n---\r\n\r\n**Parameters**\r\n\r\n`raptor-slug` <span class=\"small text-muted\">string</span>\r\n\r\nFormat is _raptor_abcd1234efgh5678_.\r\n\r\n---\r\n\r\n`datatype` <span class=\"small text-muted\">string</span>\r\n\r\nAllowed values are\r\n\r\n- volumes\r\n- revenue\r\n- price\r\n- regup\r\n- regdown\r\n- spin\r\n- volatility\r\n- correlation\r\n\r\n---\r\n\r\n**Result**\r\n\r\nReturns a list of dictionaries.",
+      "inputs": "",
+      "output": "[\r\n  [\r\n    {\r\n      \"dart\": 0, \r\n      \"spin\": 86954.45999999999, \r\n      \"regup\": 10137.6, \r\n      \"total\": 1526389.9300000002, \r\n      \"energy\": 819660.8400000001, \r\n      \"fordate\": \"2023-01-01\", \r\n      \"nonspin\": 0, \r\n      \"regdown\": 6208.75, \r\n      \"capacity\": 0, \r\n      \"energy_negative\": -101376.41, \r\n      \"energy_positive\": 704804.69\r\n    }\r\n  ], \r\n  11891287.8, \r\n  {\r\n    \"spin\": 1182488.13, \r\n    \"regup\": 69901.43, \r\n    \"energy\": 10554710.5, \r\n    \"regdown\": 84187.74000000002\r\n  }\r\n]",
+      "curl": "curl --location \\\r\n  --request GET \\\r\n  --header \"Authorization: Token ${FINMACHINES_TOKEN}\" \\\r\n  \"https://api.finmachines.com/v1/raptor/raptor_eXUXcj3z1Sqa1XWy/revenue/\"",
+      "python": "import os\r\nimport requests\r\n\r\nurl = \"https://api.finmachines.com/v1/raptor/raptor_eXUXcj3z1Sqa1XWy/revenue/\"\r\n\r\nheaders = {\r\n  \"Authorization\": f\"Token {os.getenv('FINMACHINES_TOKEN')}\"\r\n}\r\n\r\npayload={}\r\n \r\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\r\n\r\nprint(response.text)"
+    }
+  },
+  {
+    "model": "docs.api",
+    "pk": 6,
+    "fields": {
+      "dtm_created": "2022-01-01T00:00:00Z",
+      "dtm_updated": "2022-01-01T00:00:00Z",
+      "app": 3,
+      "url": "https://api.finmachines.com/v1/raptor/{raptor-slug}/download/{file-type}/",
+      "path": "/v1/raptor/{raptor-slug}/download/{file-type}/",
+      "domain": "https://api.finmachines.com/",
+      "action": "GET",
+      "description": "### Download files\r\n\r\n---\r\n\r\n**Parameters**\r\n\r\n`raptor-slug` <span class=\"small text-muted\">string</span>\r\n\r\nFormat is _raptor_abcd1234efgh5678_.\r\n\r\n\r\n`file-type`  <span class=\"small text-muted\">string</span>\r\n\r\nAllowed values are:\r\n\r\n- upload_file\r\n- output_file\r\n\r\n---\r\n\r\n**Result**\r\n\r\nReturns an XLSX file",
+      "inputs": "",
+      "output": "",
+      "curl": "curl --location \\\r\n  --request GET \\\r\n  --header \"Authorization: Token ${FINMACHINES_TOKEN}\" \\\r\n  \"https://api.finmachines.com/v1/raptor/raptor_vbsIJlwkBM2rFqGa/download/upload_file\"",
+      "python": "import os\r\nimport requests\r\n\r\nurl = \"https://api.finmachines.com/v1/raptor/raptor_vbsIJlwkBM2rFqGa/download/upload_file/\"\r\n\r\nheaders = {\r\n  \"Authorization\": f\"Token {os.getenv('FINMACHINES_TOKEN')}\"\r\n}\r\n\r\npayload={}\r\n\r\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)"
+    }
+  }
+]

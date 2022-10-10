@@ -1,0 +1,3 @@
+[submodule "qux"]
+	path = qux
+	url = git@github.com:quxdev/qux.git

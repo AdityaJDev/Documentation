@@ -1,0 +1,10 @@
+<nav id="qux-toc-nav" class="collapse qux-links">
+  <ul class="qux-navbar nav text-dark px-2 px-md-3">
+    {% regroup object_list by app.name as app_list %}
+    {% for app in app_list %}
+    <li class="nav-item">
+      <a class="nav-link px-2 mx-0 docs-app-api" href="#" data-app="{{ app.grouper|lower }}">{{ app.grouper }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+</nav>

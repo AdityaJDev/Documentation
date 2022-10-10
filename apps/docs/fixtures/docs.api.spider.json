@@ -1,0 +1,200 @@
+[
+{
+  "model": "docs.api",
+  "pk": 7,
+  "fields": {
+    "dtm_created": "2022-04-27T07:39:32.886Z",
+    "dtm_updated": "2022-04-27T07:44:19.936Z",
+    "app": 7,
+    "url": "https://berlin.enine.dev/api/v1/spider/data/",
+    "path": "/api/v1/spider/data/",
+    "domain": "https://berlin.enine.dev/",
+    "action": "GET",
+    "description": "### Spider Data\r\n\r\n---\r\n\r\n**Result**\r\n\r\nReturn a list of available ISO data and sitemap for other API calls.",
+    "inputs": "",
+    "output": "{\r\n   \"Data available for ISOs\": [\r\n       \"ercot\"\r\n   ],\r\n   \"Sitemap\": {\r\n       \"data/{iso}/report/\": \"Information about available reports for the given ISO\",\r\n       \"data/{iso}/report/{report_id}/\": \"Fetch data for the given report in ISO with given date ranges in json or csv format\",\r\n       \"data/{iso}/node/\": \"Information about available price nodes for the given ISO\",\r\n       \"data/{iso}/node/{node_id}/{data_type}/\": \"Fetch data for the given node in ISO with given date ranges in json or csv format\",\r\n       \"data/{iso}/ancillary/\": \"Information about available ancillary types for the given ISO\",\r\n       \"data/{iso}/ancillary/{anc_type}/{data_type}/\": \"Fetch data for the given ancillary type in ISO with given date ranges in json or csv format\",\r\n       \"data/{iso}/w_node/{data_type}/\": \"Information about available weather nodes for the given ISO\",\r\n       \"data/{iso}/w_node/{w_node}/{data_type}/\": \"Fetch data for the given weather zone node in ISO with given date ranges in json or csv format\",\r\n       \"data/{iso}/f_node/{data_type}/\": \"Information about available forecast zone nodes for the given ISO\",\r\n       \"data/{iso}/f_node/{f_node}/{data_type}/\": \"Fetch data for the given forecast zone node in ISO with given date ranges in json or csv format\"\r\n   }\r\n}",
+    "curl": "curl --location\\\r\n --request\\\r\n GET \"https://berlin.enine.dev/api/v1/spider/data/\"",
+    "python": "import os\r\nimport requests\r\n\r\nurl = \"https://berlin.enine.dev/api/v1/spider/data/\"\r\n\r\npayload={}\r\nheaders = {}\r\n\r\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\r\n\r\nprint(response.text)"
+  }
+},
+{
+  "model": "docs.api",
+  "pk": 8,
+  "fields": {
+    "dtm_created": "2022-04-27T07:57:40.638Z",
+    "dtm_updated": "2022-04-27T11:34:14.254Z",
+    "app": 7,
+    "url": "https://berlin.enine.dev/api/v1/spider/data/{iso}/report/",
+    "path": "/api/v1/spider/data/{iso}/report/",
+    "domain": "https://berlin.enine.dev/",
+    "action": "GET",
+    "description": "### Spider reports information\r\n---\r\n\r\n**Parameters**\r\n\r\n`iso` <span class=\"small text-muted\">string</span>\r\n\r\nAllowed values are\r\n\r\n- ercot\r\n\r\n---\r\n\r\n**Result**\r\n\r\nReturns a list of dictionaries containing information regarding the available reports and their ids.",
+    "inputs": "",
+    "output": "\"report\": \"Available data for ISO: ercot\",\r\n    \"source\": \"ercot\",\r\n    \"Available data\": [\r\n        {\r\n            \"report_id\": \"14836\",\r\n            \"name\": \"Actual System Load by Forecast Zone\",\r\n            \"description\": \"A daily report of Actual System Load by Forecast Zone for each hour of the previous operating day.\",\r\n            \"start_range\": \"2022-03-01T14:17:47.150Z\",\r\n            \"end_range\": \"2022-04-26T13:46:22.440Z\"\r\n        },\r\n        { ... },\r\n        { ... },\r\n]",
+    "curl": "curl --location\\\r\n --request\\\r\n GET 'https://berlin.enine.dev/api/v1/spider/data/ercot/report/'",
+    "python": "import os\r\nimport requests\r\n\r\nurl = \"https://berlin.enine.dev/api/v1/spider/data/ercot/report/\"\r\n\r\npayload={}\r\nheaders = {}\r\n\r\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\r\n\r\nprint(response.text)"
+  }
+},
+{
+  "model": "docs.api",
+  "pk": 9,
+  "fields": {
+    "dtm_created": "2022-04-27T08:09:45.281Z",
+    "dtm_updated": "2022-04-27T10:04:46.499Z",
+    "app": 7,
+    "url": "https://berlin.enine.dev/api/v1/spider/data/{iso}/report/{report_id}/",
+    "path": "/api/v1/spider/data/{iso}/report/{report_id}/",
+    "domain": "https://berlin.enine.dev/",
+    "action": "GET",
+    "description": "### Fetch data of a particular report.\r\n\r\n---\r\n\r\n**Parameters**\r\n\r\n`iso` <span class=\"small text-muted\">string</span>\r\n\r\nAllowed values are\r\n\r\n- ercot\r\n\r\n---\r\n`report_id` <span class=\"small text-muted\">string</span>\r\n\r\nReport id of the report.\r\n\r\n---\r\n**Query Params**\r\n\r\n`startdate` <span class=\"small text-muted\">string</span>\r\n\r\nFormat _YYYY-mm-ddTHH:MM:SS_.\r\n\r\n---\r\n`enddate` <span class=\"small text-muted\">string</span>\r\n\r\nFormat _YYYY-mm-ddTHH:MM:SS_.\r\n\r\n---\r\n`data_format` <span class=\"small text-muted\">string</span>\r\n\r\nAllowed values are\r\n\r\n- csv\r\n- json\r\n\r\n---\r\n\r\n\r\n**Result**\r\n\r\nReturns a list of dictionaries containing information regarding the available reports and their ids.",
+    "inputs": "",
+    "output": "{\r\n    \"report\": \"DAM Settlement Point Prices\",\r\n    \"source\": \"ERCOT\",\r\n    \"data\": [\r\n        {\r\n            \"deliverydate\": \"2022-04-01T00:00:00Z\",\r\n            \"hourending\": \"01:00\",\r\n            \"settlementpoint\": \"AEEC\",\r\n            \"settlementpointprice\": 40.46,\r\n            \"dstflag\": \"N\",\r\n            \"recordtime\": \"2022-03-31 12:51:46\"\r\n        },\r\n        {\r\n            \"deliverydate\": \"2022-04-01T00:00:00Z\",\r\n            \"hourending\": \"01:00\",\r\n            \"settlementpoint\": \"AJAXWIND_RN\",\r\n            \"settlementpointprice\": 40.73,\r\n            \"dstflag\": \"N\",\r\n            \"recordtime\": \"2022-03-31 12:51:46\"\r\n        },\r\n        { ... },\r\n        { ... },\r\n  ]\r\n}",
+    "curl": "curl --location\\\r\n --request\\\r\n GET 'https://berlin.enine.dev/api/v1/spider/data/ercot/report/12331/?startdate=2022-04-01T00:00:00&enddate=2022-04-12T01:00:00&data_format=json'",
+    "python": "import os\r\nimport requests\r\n\r\nurl = \"https://berlin.enine.dev/api/v1/spider/data/ercot/report/12331\"\r\n\r\npayload={}\r\nheaders = {}\r\n\r\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\r\n\r\nprint(response.text)"
+  }
+},
+{
+  "model": "docs.api",
+  "pk": 10,
+  "fields": {
+    "dtm_created": "2022-04-27T08:27:24.328Z",
+    "dtm_updated": "2022-04-27T11:32:57.255Z",
+    "app": 7,
+    "url": "https://berlin.enine.dev/api/v1/spider/data/{iso}/node/",
+    "path": "/api/v1/spider/data/{iso}/node/",
+    "domain": "https://berlin.enine.dev/",
+    "action": "GET",
+    "description": "### Available price nodes\r\n\r\n---\r\n\r\n**Parameters**\r\n\r\n`iso` <span class=\"small text-muted\">string</span>\r\n\r\nAllowed values are\r\n\r\n- ercot\r\n\r\n---\r\n\r\n**Result**\r\n\r\nReturns a list containing the price nodes.",
+    "inputs": "",
+    "output": "{\r\n    \"report\": \"Settlement Point List\",\r\n    \"source\": \"ERCOT\",\r\n    \"data\": [\r\n        \"AEEC\",\r\n        \"AJAXWIND_RN\",\r\n        \"ALGOD_ALL_RN\",\r\n        \"ALVIN_RN\",\r\n        \"AMADEUS_ALL\",\r\n        \"AMISTAD_ALL\",\r\n        \"AMOCOOIL_CC1\",\r\n        \"AMOCOOIL_CC2\",\r\n        \"AMOCO_PUN1\",\r\n        \"AMOCO_PUN2\",\r\n         ...\r\n         ...\r\n         ...\r\n         ...\r\n   ]\r\n}",
+    "curl": "curl --location\\\r\n --request\\\r\n GET 'https://berlin.enine.dev/api/v1/spider/data/ercot/node/'",
+    "python": "import os\r\nimport requests\r\n\r\nurl = \"https://berlin.enine.dev/api/v1/spider/data/ercot/node/\"\r\n\r\npayload={}\r\nheaders = {}\r\n\r\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\r\n\r\nprint(response.text)"
+  }
+},
+{
+  "model": "docs.api",
+  "pk": 11,
+  "fields": {
+    "dtm_created": "2022-04-27T08:53:00.925Z",
+    "dtm_updated": "2022-04-27T10:03:34.465Z",
+    "app": 7,
+    "url": "https://berlin.enine.dev/api/v1/spider/data/{iso}/node/{node}/{data_column}/",
+    "path": "/v1/spider/data/{iso}/node/{node}/{data_column}/",
+    "domain": "https://berlin.enine.dev/",
+    "action": "GET",
+    "description": "### Fetch price data for a particular node.\r\n\r\n---\r\n\r\n**Parameters**\r\n\r\n`iso` <span class=\"small text-muted\">string</span>\r\n\r\nAllowed values are\r\n\r\n- ercot\r\n\r\n---\r\n`node` <span class=\"small text-muted\">string</span>\r\n\r\nName of the node.\r\n\r\n---\r\n`data_column` <span class=\"small text-muted\">string</span>\r\n\r\nAllowed values are\r\n\r\n- da_price\r\n- rt_price\r\n\r\n---\r\n**Query Params**\r\n\r\n`startdate` <span class=\"small text-muted\">string</span>\r\n\r\nFormat _YYYY-mm-ddTHH:MM:SS_.\r\n\r\n---\r\n`enddate` <span class=\"small text-muted\">string</span>\r\n\r\nFormat _YYYY-mm-ddTHH:MM:SS_.\r\n\r\n---\r\n`data_format` <span class=\"small text-muted\">string</span>\r\n\r\nAllowed values are\r\n\r\n- csv\r\n- json\r\n\r\n---\r\n\r\n\r\n**Result**\r\n\r\nReturns a list of dictionaries containing information for price data.",
+    "inputs": "",
+    "output": "{\r\n    \"report\": \"DAM Settlement Point Prices\",\r\n    \"source\": \"ERCOT\",\r\n    \"data\": [\r\n        {\r\n            \"deliverydate\": \"2022-04-01T00:00:00Z\",\r\n            \"hourending\": \"01:00\",\r\n            \"settlementpoint\": \"AEEC\",\r\n            \"settlementpointprice\": 40.46,\r\n            \"dstflag\": \"N\",\r\n            \"recordtime\": \"2022-03-31 12:51:46\"\r\n        },\r\n        {\r\n            \"deliverydate\": \"2022-04-01T00:00:00Z\",\r\n            \"hourending\": \"02:00\",\r\n            \"settlementpoint\": \"AEEC\",\r\n            \"settlementpointprice\": 31.52,\r\n            \"dstflag\": \"N\",\r\n            \"recordtime\": \"2022-03-31 12:51:46\"\r\n        },\r\n        { ... },\r\n        { ... },\r\n  ]\r\n}",
+    "curl": "curl --location\\\r\n --request\\\r\n GET 'https://berlin.enine.dev/api/v1/spider/data/ercot/node/aeec/da_price/?startdate=2022-04-01T00:00:00&enddate=2022-04-12T01:00:00&data_format=json'",
+    "python": "import os\r\nimport requests\r\n\r\nurl = \"https://berlin.enine.dev/api/v1/spider/data/ercot/node/aeec/da_price/?startdate=2022-04-01T00:00:00&enddate=2022-04-12T01:00:00&data_format=json\"\r\n\r\npayload={}\r\nheaders = {}\r\n\r\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\r\n\r\nprint(response.text)"
+  }
+},
+{
+  "model": "docs.api",
+  "pk": 12,
+  "fields": {
+    "dtm_created": "2022-04-27T09:18:06.960Z",
+    "dtm_updated": "2022-04-27T10:03:21.250Z",
+    "app": 7,
+    "url": "https://berlin.enine.dev/api/v1/spider/data/{iso}/ancillary/",
+    "path": "/api/v1/spider/data/{iso}/ancillary/",
+    "domain": "https://berlin.enine.dev/",
+    "action": "GET",
+    "description": "### Fetch ancillary type data\r\n\r\n---\r\n\r\n**Parameters**\r\n\r\n`iso` <span class=\"small text-muted\">string</span>\r\n\r\nAllowed values are\r\n\r\n- ercot\r\n\r\n---\r\n\r\n**Result**\r\n\r\nReturns a list containing the ancillary types.",
+    "inputs": "",
+    "output": "{\r\n    \"report\": \"Ancillary Type List\",\r\n    \"source\": \"ERCOT\",\r\n    \"data\": [\r\n        \"RRS\",\r\n        \"REGUP\",\r\n        \"REGDN\",\r\n        \"NSPIN\"\r\n    ]\r\n}",
+    "curl": "curl --location\\\r\n --request\\\r\n GET 'https://berlin.enine.dev/api/v1/spider/data/ercot/ancillary/'",
+    "python": "import os\r\nimport requests\r\n\r\nurl = \"https://berlin.enine.dev/api/v1/spider/data/ercot/ancillary\"\r\n\r\npayload={}\r\nheaders = {}\r\n\r\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\r\n\r\nprint(response.text)"
+  }
+},
+{
+  "model": "docs.api",
+  "pk": 13,
+  "fields": {
+    "dtm_created": "2022-04-27T10:01:19.244Z",
+    "dtm_updated": "2022-04-27T10:41:14.967Z",
+    "app": 7,
+    "url": "https://berlin.enine.dev/api/v1/spider/data/{iso}/ancillary/{anc_type}/{data_column}/",
+    "path": "/api/v1/spider/data/{iso}/ancillary/{anc_type}/{data_column}/",
+    "domain": "https://berlin.enine.dev/",
+    "action": "GET",
+    "description": "### Fetch ancillary data for a particular ancillary type.\r\n\r\n---\r\n\r\n**Parameters**\r\n\r\n`iso` <span class=\"small text-muted\">string</span>\r\n\r\nAllowed values are\r\n\r\n- ercot\r\n\r\n---\r\n`anc_type` <span class=\"small text-muted\">string</span>\r\n\r\nName of the ancillary service.\r\n\r\n---\r\n`data_column` <span class=\"small text-muted\">string</span>\r\n\r\nAllowed values are\r\n\r\n- price\r\n- offer\r\n\r\n---\r\n**Query Params**\r\n\r\n`startdate` <span class=\"small text-muted\">string</span>\r\n\r\nFormat _YYYY-mm-ddTHH:MM:SS_.\r\n\r\n---\r\n`enddate` <span class=\"small text-muted\">string</span>\r\n\r\nFormat _YYYY-mm-ddTHH:MM:SS_.\r\n\r\n---\r\n`data_format` <span class=\"small text-muted\">string</span>\r\n\r\nAllowed values are\r\n\r\n- csv\r\n- json\r\n\r\n---\r\n\r\n\r\n**Result**\r\n\r\nReturns a list of dictionaries containing data for given ancillary type.",
+    "inputs": "",
+    "output": "{\r\n    \"report\": \"DAM Clearing Prices for Capacity\",\r\n    \"source\": \"ERCOT\",\r\n    \"data\": [\r\n        {\r\n            \"deliverydate\": \"2022-04-25T00:00:00Z\",\r\n            \"hourending\": \"01:00\",\r\n            \"ancillarytype\": \"RRS\",\r\n            \"mcpc\": 8.0,\r\n            \"dstflag\": \"N\",\r\n            \"recordtime\": \"2022-04-24 13:01:03\"\r\n        },\r\n        {\r\n            \"deliverydate\": \"2022-04-25T00:00:00Z\",\r\n            \"hourending\": \"02:00\",\r\n            \"ancillarytype\": \"RRS\",\r\n            \"mcpc\": 5.35,\r\n            \"dstflag\": \"N\",\r\n            \"recordtime\": \"2022-04-24 13:01:03\"\r\n        },\r\n        {\r\n            \"deliverydate\": \"2022-04-25T00:00:00Z\",\r\n            \"hourending\": \"03:00\",\r\n            \"ancillarytype\": \"RRS\",\r\n            \"mcpc\": 5.0,\r\n            \"dstflag\": \"N\",\r\n            \"recordtime\": \"2022-04-24 13:01:03\"\r\n        },\r\n        { ... },\r\n        { ... },\r\n  ]\r\n}",
+    "curl": "curl --location\\\r\n --request\\\r\n GET 'https://berlin.enine.dev/api/v1/spider/data/ercot/ancillary/rrs/price/?startdate=2022-04-01T00:00:00&enddate=2022-04-12T01:00:00&data_format=json'",
+    "python": "import os\r\nimport requests\r\n\r\nurl = \"https://berlin.enine.dev/api/v1/spider/data/ercot/ancillary/rrs/price/?startdate=2022-04-01T00:00:00&enddate=2022-04-12T01:00:00&data_format=json\"\r\n\r\npayload={}\r\nheaders = {}\r\n\r\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\r\n\r\nprint(response.text)"
+  }
+},
+{
+  "model": "docs.api",
+  "pk": 14,
+  "fields": {
+    "dtm_created": "2022-04-27T10:10:54.925Z",
+    "dtm_updated": "2022-04-27T11:30:23.794Z",
+    "app": 7,
+    "url": "https://berlin.enine.dev/api/v1/spider/data/{iso}/w_node/{data_column}/",
+    "path": "/api/v1/spider/data/{iso}/w_node/{data_column}/",
+    "domain": "https://berlin.enine.dev/",
+    "action": "GET",
+    "description": "### Available weather zones\r\n\r\n---\r\n\r\n**Parameters**\r\n\r\n`iso` <span class=\"small text-muted\">string</span>\r\n\r\nAllowed values are\r\n\r\n- ercot\r\n\r\n---\r\n`data_column` <span class=\"small text-muted\">string</span>\r\n\r\nAllowed values are\r\n\r\n- temperature\r\n- intra_hour_forecast\r\n- 7_day_forecast_by_model\r\n- 7_day_forecast\r\n- actual\r\n---\r\n\r\n**Result**\r\n\r\nReturns a list containing the weather zone.",
+    "inputs": "",
+    "output": "{\r\n    \"report\": \"Weather Node List\",\r\n    \"source\": \"ERCOT\",\r\n    \"data\": [\r\n        \"coast\",\r\n        \"east\",\r\n        \"farwest\",\r\n        \"north\",\r\n        \"northcentral\",\r\n        \"southcentral\",\r\n        \"southern\",\r\n        \"west\"\r\n    ]\r\n}",
+    "curl": "curl --location\\\r\n --request\\\r\n GET 'https://berlin.enine.dev/api/v1/spider/data/ercot/w_node/temperature/'",
+    "python": "import os\r\nimport requests\r\n\r\nurl = \"https://berlin.enine.dev/api/v1/spider/data/ercot/w_node/temperature/\"\r\n\r\npayload={}\r\nheaders = {}\r\n\r\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\r\n\r\nprint(response.text)"
+  }
+},
+{
+  "model": "docs.api",
+  "pk": 15,
+  "fields": {
+    "dtm_created": "2022-04-27T10:45:36.645Z",
+    "dtm_updated": "2022-04-27T11:31:21.610Z",
+    "app": 7,
+    "url": "https://berlin.enine.dev/api/v1/spider/data/{iso}/w_node/{w_node}/{data_column}/",
+    "path": "/api/v1/spider/data/{iso}/w_node/{w_node}/{data_column}/",
+    "domain": "https://berlin.enine.dev/",
+    "action": "GET",
+    "description": "### Fetch data for a particular weather zone.\r\n\r\n---\r\n\r\n**Parameters**\r\n\r\n`iso` <span class=\"small text-muted\">string</span>\r\n\r\nAllowed values are\r\n\r\n- ercot\r\n\r\n---\r\n`w_node` <span class=\"small text-muted\">string</span>\r\n\r\nName of the weather zone.\r\n\r\n---\r\n`data_column` <span class=\"small text-muted\">string</span>\r\n\r\nAllowed values are\r\n\r\n- temperature\r\n- intra_hour_forecast\r\n- 7_day_forecast_by_model\r\n- 7_day_forecast\r\n- actual\r\n\r\n---\r\n**Query Params**\r\n\r\n`startdate` <span class=\"small text-muted\">string</span>\r\n\r\nFormat _YYYY-mm-ddTHH:MM:SS_.\r\n\r\n---\r\n`enddate` <span class=\"small text-muted\">string</span>\r\n\r\nFormat _YYYY-mm-ddTHH:MM:SS_.\r\n\r\n---\r\n`data_format` <span class=\"small text-muted\">string</span>\r\n\r\nAllowed values are\r\n\r\n- csv\r\n- json\r\n\r\n---\r\n\r\n\r\n**Result**\r\n\r\nReturns a list of dictionaries containing data for given weather zone.",
+    "inputs": "",
+    "output": "{\r\n    \"report\": \"Actual System Load by Weather Zone\",\r\n    \"source\": \"ERCOT\",\r\n    \"data\": [\r\n        {\r\n            \"operday\": \"2022-04-10T00:00:00Z\",\r\n            \"hourending\": \"01:00\",\r\n            \"dstflag\": \"N\",\r\n            \"coast\": 10071.8\r\n        },\r\n        {\r\n            \"operday\": \"2022-04-10T00:00:00Z\",\r\n            \"hourending\": \"02:00\",\r\n            \"dstflag\": \"N\",\r\n            \"coast\": 9705.47\r\n        },\r\n        {\r\n            \"operday\": \"2022-04-10T00:00:00Z\",\r\n            \"hourending\": \"03:00\",\r\n            \"dstflag\": \"N\",\r\n            \"coast\": 9441.92\r\n        },\r\n        {\r\n            \"operday\": \"2022-04-10T00:00:00Z\",\r\n            \"hourending\": \"04:00\",\r\n            \"dstflag\": \"N\",\r\n            \"coast\": 9223.45\r\n        },\r\n        { ... },\r\n        { ... },\r\n  ]\r\n}",
+    "curl": "curl --location\\\r\n --request\\\r\n GET 'https://berlin.enine.dev/api/v1/spider/data/ercot/w_node/coast/actual/?startdate=2022-04-10T00:00:00&enddate=2022-04-27T01:00:00&data_format=json'",
+    "python": "import os\r\nimport requests\r\n\r\nurl = \"https://berlin.enine.dev/api/v1/spider/data/ercot/w_node/coast/actual/?startdate=2022-04-10T00:00:00&enddate=2022-04-27T01:00:00&data_format=json\"\r\n\r\npayload={}\r\nheaders = {}\r\n\r\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\r\n\r\nprint(response.text)"
+  }
+},
+{
+  "model": "docs.api",
+  "pk": 16,
+  "fields": {
+    "dtm_created": "2022-04-27T10:55:17.731Z",
+    "dtm_updated": "2022-04-27T11:30:32.328Z",
+    "app": 7,
+    "url": "https://berlin.enine.dev/api/v1/spider/data/{iso}/f_node/{data_column}/",
+    "path": "/api/v1/spider/data/{iso}/f_node/{data_column}/",
+    "domain": "https://berlin.enine.dev/",
+    "action": "GET",
+    "description": "### Available forecast zones\r\n\r\n---\r\n\r\n**Parameters**\r\n\r\n`iso` <span class=\"small text-muted\">string</span>\r\n\r\nAllowed values are\r\n\r\n- ercot\r\n\r\n---\r\n`data_column` <span class=\"small text-muted\">string</span>\r\n\r\nAllowed values are\r\n\r\n- 7_day_forecast\r\n- actual\r\n---\r\n\r\n**Result**\r\n\r\nReturns a list containing the forecast zones.",
+    "inputs": "",
+    "output": "{\r\n    \"report\": \"Forecast Node List\",\r\n    \"source\": \"ERCOT\",\r\n    \"data\": [\r\n        \"north\",\r\n        \"south\",\r\n        \"west\",\r\n        \"houston\",\r\n        \"total\"\r\n    ]\r\n}",
+    "curl": "curl --location\\\r\n --request\\\r\n GET 'https://berlin.enine.dev/api/v1/spider/data/ercot/f_node/actual/'",
+    "python": "import os\r\nimport requests\r\n\r\nurl = \"https://berlin.enine.dev/api/v1/spider/data/ercot/f_node/actual/\"\r\n\r\npayload={}\r\nheaders = {}\r\n\r\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\r\n\r\nprint(response.text)"
+  }
+},
+{
+  "model": "docs.api",
+  "pk": 17,
+  "fields": {
+    "dtm_created": "2022-04-27T11:00:42.542Z",
+    "dtm_updated": "2022-04-27T11:29:14.295Z",
+    "app": 7,
+    "url": "https://berlin.enine.dev/api/v1/spider/data/{iso}/f_node/{f_node}/{data_column}/",
+    "path": "/api/v1/spider/data/{iso}/f_node/{f_node}/{data_column}/",
+    "domain": "https://berlin.enine.dev/",
+    "action": "GET",
+    "description": "### Fetch data for a particular forecast zone.\r\n\r\n---\r\n\r\n**Parameters**\r\n\r\n`iso` <span class=\"small text-muted\">string</span>\r\n\r\nAllowed values are\r\n\r\n- ercot\r\n\r\n---\r\n`f_node` <span class=\"small text-muted\">string</span>\r\n\r\nName of the forecast zone.\r\n\r\n---\r\n`data_column` <span class=\"small text-muted\">string</span>\r\n\r\nAllowed values are\r\n\r\n- 7_day_forecast\r\n- actual\r\n\r\n---\r\n**Query Params**\r\n\r\n`startdate` <span class=\"small text-muted\">string</span>\r\n\r\nFormat _YYYY-mm-ddTHH:MM:SS_.\r\n\r\n---\r\n`enddate` <span class=\"small text-muted\">string</span>\r\n\r\nFormat _YYYY-mm-ddTHH:MM:SS_.\r\n\r\n---\r\n`data_format` <span class=\"small text-muted\">string</span>\r\n\r\nAllowed values are\r\n\r\n- csv\r\n- json\r\n\r\n---\r\n\r\n\r\n**Result**\r\n\r\nReturns a list of dictionaries containing data for given forecast zone.",
+    "inputs": "",
+    "output": "\"report\": \"Seven-Day Load Forecast by Forecast Zone\",\r\n    \"source\": \"ERCOT\",\r\n    \"data\": [\r\n        {\r\n            \"deliverydate\": \"2022-04-01T00:00:00Z\",\r\n            \"hourending\": \"10:00\",\r\n            \"dstflag\": \"N\",\r\n            \"north\": 13869.78575354\r\n        },\r\n        {\r\n            \"deliverydate\": \"2022-04-01T00:00:00Z\",\r\n            \"hourending\": \"11:00\",\r\n            \"dstflag\": \"N\",\r\n            \"north\": 13813.8786987549\r\n        },\r\n       {\r\n            \"deliverydate\": \"2022-04-01T00:00:00Z\",\r\n            \"hourending\": \"12:00\",\r\n            \"dstflag\": \"N\",\r\n            \"north\": 10813.8786987549\r\n        },\r\n       { ... },\r\n       { ... },\r\n  ]\r\n}",
+    "curl": "curl --location\\\r\n --request\\\r\n GET 'https://berlin.enine.dev/v1/spider/data/ercot/f_node/north/actual/?startdate=2022-04-10T00:00:00&enddate=2022-04-27T01:00:00&data_format=json'",
+    "python": "import os\r\nimport requests\r\n\r\nurl = \"https://berlin.enine.dev/api/v1/spider/data/ercot/f_node/north/actual/?startdate=2022-04-10T00:00:00&enddate=2022-04-27T01:00:00&data_format=json\"\r\n\r\npayload={}\r\nheaders = {}\r\n\r\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\r\n\r\nprint(response.text)"
+  }
+}
+]
